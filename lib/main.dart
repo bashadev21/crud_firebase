@@ -150,36 +150,36 @@ class _MyAppState extends State<MyApp> {
                   }),
             ],
           ),
-          // StreamBuilder(
-          //     stream:
-          //         Firestore.instance.collection("student details").snapshots(),
-          //     builder: (context, snapshot) {
-          //       if (snapshot.hasData) {
-          //         return ListView.builder(
-          //             shrinkWrap: true,
-          //             itemCount: snapshot.data.documents.length,
-          //             itemBuilder: (context, index) {
-          //               DocumentSnapshot documentSnapshot =
-          //                   snapshot.data.documents[index];
-          //               return Row(
-          //                 children: [
-          //                   Expanded(
-          //                     child: Text(documentSnapshot['studentdname']),
-          //                   ),
-          //                   Expanded(
-          //                     child: Text(documentSnapshot['studentage']),
-          //                   ),
-          //                   Expanded(
-          //                     child: Text(documentSnapshot['Department']),
-          //                   ),
-          //                   Expanded(
-          //                     child: Text(documentSnapshot['StudentMark']),
-          //                   ),
-          //                 ],
-          //               );
-          //             });
-          //       }
-          //     })
+          StreamBuilder(
+              stream:
+                  Firestore.instance.collection("student details").snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data.documents.length,
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot documentSnapshot =
+                            snapshot.data.documents[index];
+                        return Row(
+                          children: [
+                            Expanded(
+                              child: Text(documentSnapshot['studentdname']),
+                            ),
+                            Expanded(
+                              child: Text(documentSnapshot['studentage']),
+                            ),
+                            Expanded(
+                              child: Text(documentSnapshot['Department']),
+                            ),
+                            Expanded(
+                              child: Text(documentSnapshot['StudentMark']),
+                            ),
+                          ],
+                        );
+                      });
+                }
+              })
         ],
       ),
     );
